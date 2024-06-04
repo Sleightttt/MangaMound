@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import style from "./discover.style";
 import onepiece from "../../assets/images/onepiece.jpg";
+import { images } from "../../constants";
 
 const dummyMangaData = [
   {
@@ -36,16 +37,14 @@ const dummyMangaData = [
 const Discover = () => {
   return (
     <View style={{ flex: 1 }}>
+      <Image source={images.mmbackground} style={style.backgroundImage} />
       <FlatList
         keyExtractor={(item) => item.title}
         contentContainerStyle={style.mangaList}
         data={dummyMangaData}
         renderItem={({ item }) => (
           <TouchableOpacity style={style.mangaCard}>
-            <Image
-              source={onepiece} // Use image from 'image' property in data
-              style={style.mangaCardImage}
-            />
+            <Image source={onepiece} style={style.mangaCardImage} />
             <Text style={style.mangaTitle}>{item.title}</Text>
             <Text style={style.mangaChapter}>{item.chapters} Chapters</Text>
           </TouchableOpacity>

@@ -44,6 +44,12 @@ const style = StyleSheet.create({
   mangaList: {
     padding: 10,
   },
+  backgroundImage: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    zIndex: -6,
+  },
 });
 
 export default style;
