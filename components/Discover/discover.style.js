@@ -13,14 +13,15 @@ const style = StyleSheet.create({
     elevation: 3, // Elevation for Android devices
     height: 200,
     margin: 10,
+    borderColor: "#000",
+    borderWidth: 1,
   },
   mangaTitle: {
     color: "#000000", // White text color
     fontSize: 24, // Font size
     fontWeight: "bold", // Bold text
     marginLeft: 10,
-    marginTop: 10, // Add space to the left of title
-    // Add space below title
+    marginTop: 10,
     textShadowColor: "#fff",
     textShadowOffset: { width: 2, height: 1 },
     textShadowRadius: 1,
