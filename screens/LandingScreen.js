@@ -1,3 +1,4 @@
+// screens/LandingScreen.js
 import React from "react";
 import {
   View,
@@ -8,160 +9,102 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import MangaCard from "../components/MangaCard";
-import { icons } from "../constants";
+import CategoryContainer from "../components/CategoryContainer";
 
 const mangas = [
-  { id: "1", title: "One Piece", mangaId: "101" },
-  { id: "2", title: "Jujutsu Kaisen", mangaId: "102" },
-  { id: "3", title: "My Hero Academia", mangaId: "103" },
-  { id: "4", title: "Demon Slayer", mangaId: "104" },
-  { id: "5", title: "Black Clover", mangaId: "105" },
-  { id: "6", title: "Attack on Titan", mangaId: "106" },
-  { id: "7", title: "Naruto", mangaId: "107" },
-  { id: "8", title: "Bleach", mangaId: "108" },
-  { id: "9", title: "One Punch Man", mangaId: "109" },
-  { id: "10", title: "Tokyo Revengers", mangaId: "110" },
-  { id: "11", title: "Fairy Tail", mangaId: "111" },
+  { id: 1, title: "One Piece", mangaId: "101", description: "Description" },
+  {
+    id: 2,
+    title: "Jujutsu Kaisen",
+    mangaId: "102",
+    description: "Description",
+  },
+  {
+    id: 3,
+    title: "My Hero Academia",
+    mangaId: "103",
+    description: "Description",
+  },
+  {
+    id: 4,
+    title: "Demon Slayer",
+    mangaId: "104",
+    description: "Description",
+  },
+  {
+    id: 5,
+    title: "Black Clover",
+    mangaId: "105",
+    description: "Description",
+  },
+  {
+    id: 6,
+    title: "Attack on Titan",
+    mangaId: "106",
+    description: "Description",
+  },
+  { id: 7, title: "Naruto", mangaId: "107", description: "Description" },
+  { id: 8, title: "Bleach", mangaId: "108", description: "Description" },
+  {
+    id: 9,
+    title: "One Punch Man",
+    mangaId: "109",
+    description: "Description",
+  },
+  {
+    id: 11,
+    title: "Tokyo Revengers",
+    mangaId: "110",
+    description: "Description",
+  },
+  { id: 12, title: "Fairy Tail", mangaId: "111", description: "Description" },
 ];
 
 const LandingScreen = ({ navigation }) => {
+  const handlePress = (id) => {
+    navigation.navigate("MangaDetails", { mangaId: id });
+  };
+
   return (
-    <ScrollView>
-      <View style={{ flex: 1 }}>
-        <View style={styles.catContainer}>
-          <View style={styles.catHeader}>
-            <TouchableOpacity style={styles.catPress}>
-              <Text style={styles.title}>Continue Reading</Text>
-              <Image source={icons.rightArrow} style={styles.catArrow} />
-            </TouchableOpacity>
-          </View>
-
-          <FlatList
-            horizontal
-            data={mangas}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate("Chapter", { chapterId: item.id })
-                }
-              >
-                <MangaCard title={item.title} />
-              </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-        <View style={styles.catContainer}>
-          <View style={styles.catHeader}>
-            <TouchableOpacity style={styles.catPress}>
-              <Text style={styles.title}>New Arrivals</Text>
-              <Image source={icons.rightArrow} style={styles.catArrow} />
-            </TouchableOpacity>
-          </View>
-
-          <FlatList
-            horizontal
-            data={mangas}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate("Chapter", { chapterId: item.id })
-                }
-              >
-                <MangaCard title={item.title} />
-              </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-        <View style={styles.catContainer}>
-          <View style={styles.catHeader}>
-            <TouchableOpacity style={styles.catPress}>
-              <Text style={styles.title}>Trending</Text>
-              <Image source={icons.rightArrow} style={styles.catArrow} />
-            </TouchableOpacity>
-          </View>
-
-          <FlatList
-            horizontal
-            data={mangas}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate("Chapter", { chapterId: item.id })
-                }
-              >
-                <MangaCard title={item.title} />
-              </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-        <View style={styles.catContainer}>
-          <View style={styles.catHeader}>
-            <TouchableOpacity style={styles.catPress}>
-              <Text style={styles.title}>Fantasy</Text>
-              <Image source={icons.rightArrow} style={styles.catArrow} />
-            </TouchableOpacity>
-          </View>
-
-          <FlatList
-            horizontal
-            data={mangas}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate("Chapter", { chapterId: item.id })
-                }
-              >
-                <MangaCard title={item.title} />
-              </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-        <View style={styles.catContainer}>
-          <View style={styles.catHeader}>
-            <TouchableOpacity style={styles.catPress}>
-              <Text style={styles.title}>Fantasy</Text>
-              <Image source={icons.rightArrow} style={styles.catArrow} />
-            </TouchableOpacity>
-          </View>
-
-          <FlatList
-            horizontal
-            data={mangas}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate("Chapter", { chapterId: item.id })
-                }
-              >
-                <MangaCard title={item.title} />
-              </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
+    <ScrollView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <CategoryContainer
+          title="Continue Reading"
+          data={mangas}
+          onPress={handlePress}
+        />
+        <CategoryContainer
+          title="Popular Mangas"
+          data={mangas}
+          onPress={handlePress}
+        />
+        <CategoryContainer
+          title="New Releases"
+          data={mangas}
+          onPress={handlePress}
+        />
+        <CategoryContainer
+          title="Top Rated"
+          data={mangas}
+          onPress={handlePress}
+        />
+        <CategoryContainer
+          title="Fantasy"
+          data={mangas}
+          onPress={handlePress}
+        />
+        <CategoryContainer
+          title="Slice of Life"
+          data={mangas}
+          onPress={handlePress}
+        />
       </View>
     </ScrollView>
   );
 };
 
-export default LandingScreen;
-
 const styles = StyleSheet.create({
-  catContainer: { flex: 1, backgroundColor: "red", height: 150 },
-  catArrow: {
-    width: 20,
-    height: 20,
-  },
-  catPress: { flexDirection: "row", alignItems: "center" },
-  catHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  title: { fontSize: 24, fontWeight: "bold" },
-  description: { fontSize: 16, marginTop: 10 },
+  container: { flex: 1 },
 });
+
+export default LandingScreen;

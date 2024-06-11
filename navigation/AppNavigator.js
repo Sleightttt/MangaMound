@@ -20,7 +20,11 @@ const MangaStack = () => (
       component={LandingScreen}
       options={{ headerShown: false }}
     />
-    <Stack.Screen name="MangaDetails" component={MangaDetailsScreen} />
+    <Stack.Screen
+      name="MangaDetails"
+      component={MangaDetailsScreen}
+      options={{ title: "Manga Details", headerShown: false }}
+    />
   </Stack.Navigator>
 );
 
