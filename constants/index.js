@@ -3,4 +3,8 @@ const images = {
   mmbackground: require("../assets/images/mmbg.png"),
 };
 
-export { images };
+const icons = {
+  rightArrow: require("../assets/icons/right-arrow.png"),
+};
+
+export { images, icons };
