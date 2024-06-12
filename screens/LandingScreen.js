@@ -8,8 +8,10 @@ import {
   StyleSheet,
   Image,
   ScrollView,
+  ImageBackground,
 } from "react-native";
 import CategoryContainer from "../components/CategoryContainer";
+import { images } from "../constants";
 
 const mangas = [
   { id: 1, title: "One Piece", mangaId: "101", description: "Description" },
@@ -67,44 +69,53 @@ const LandingScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <CategoryContainer
-          title="Continue Reading"
-          data={mangas}
-          onPress={handlePress}
-        />
-        <CategoryContainer
-          title="Popular Mangas"
-          data={mangas}
-          onPress={handlePress}
-        />
-        <CategoryContainer
-          title="New Releases"
-          data={mangas}
-          onPress={handlePress}
-        />
-        <CategoryContainer
-          title="Top Rated"
-          data={mangas}
-          onPress={handlePress}
-        />
-        <CategoryContainer
-          title="Fantasy"
-          data={mangas}
-          onPress={handlePress}
-        />
-        <CategoryContainer
-          title="Slice of Life"
-          data={mangas}
-          onPress={handlePress}
-        />
-      </View>
+      <ImageBackground
+        source={images.mmbackground}
+        style={styles.backgroundImage}
+      >
+        <View style={styles.container}>
+          <CategoryContainer
+            title="Continue Reading"
+            data={mangas}
+            onPress={handlePress}
+          />
+          <CategoryContainer
+            title="Popular Mangas"
+            data={mangas}
+            onPress={handlePress}
+          />
+          <CategoryContainer
+            title="New Releases"
+            data={mangas}
+            onPress={handlePress}
+          />
+          <CategoryContainer
+            title="Top Rated"
+            data={mangas}
+            onPress={handlePress}
+          />
+          <CategoryContainer
+            title="Fantasy"
+            data={mangas}
+            onPress={handlePress}
+          />
+          <CategoryContainer
+            title="Slice of Life"
+            data={mangas}
+            onPress={handlePress}
+          />
+        </View>
+      </ImageBackground>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover", // or 'contain'
+  },
 });
 
 export default LandingScreen;
