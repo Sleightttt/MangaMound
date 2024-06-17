@@ -1,4 +1,5 @@
 import React from "react";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 import {
   View,
   Text,
