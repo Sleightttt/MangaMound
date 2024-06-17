@@ -1,4 +1,3 @@
-// screens/LandingScreen.js
 import React from "react";
 import {
   View,
@@ -69,12 +68,14 @@ const LandingScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={{ flex: 1 }}>
-      <ImageBackground
-        source={images.mmbackground}
-        style={styles.backgroundImage}
-      >
+      <ImageBackground source={images.lp_bg} style={styles.backgroundImage}>
         <View style={styles.container}>
-          <View style={styles.banner}></View>
+          <View style={styles.banner}>
+            <ImageBackground source={images.promo} style={styles.bannerImage} />
+            <View style={styles.promoH}>
+              <Text style={styles.promoText}>Final Chapter Tomorrow</Text>
+            </View>
+          </View>
           <CategoryContainer
             title="Continue Reading"
             data={mangas}
@@ -112,15 +113,39 @@ const LandingScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+  },
   banner: {
     height: 200,
+    width: "98%",
+    borderRadius: 20,
+    overflow: "hidden",
+  },
+  bannerImage: {
     width: "100%",
-    backgroundColor: "rgba(0,0,0,0.5)",
+    height: "100%",
+    resizeMode: "cover",
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: "cover", // or 'contain'
+    resizeMode: "cover", // Changed from 'center' to 'cover'
+    justifyContent: "center",
+  },
+  promoText: {
+    color: "red",
+    padding: 5,
+    borderRadius: 20,
+  },
+  promoH: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    borderRadius: 20,
+    backgroundColor: "white",
   },
 });
 

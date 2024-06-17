@@ -1,12 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { images } from "../constants";
 
 const MangaCard = ({ title }) => (
   <View style={styles.card}>
-    <Image
-      source={require("../assets/images/onepiece.jpg")}
-      style={styles.cardBackground}
-    />
+    <Image source={images.manga1} style={styles.cardBackground} />
     <Text style={styles.title}>{title}</Text>
   </View>
 );
@@ -28,11 +26,11 @@ const styles = StyleSheet.create({
     margin: 10,
     fontSize: 18,
     fontWeight: "bold",
-    textShadowColor: "#fff",
+    textShadowColor: "white",
     textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 3,
+    textShadowRadius: 2.5,
     textAlign: "center",
-    color: "red",
+    color: "black",
   },
   cardBackground: {
     width: "100%",

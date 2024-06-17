@@ -52,15 +52,16 @@ const styles = StyleSheet.create({
   catPress: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center", // Center the content horizontally
-    borderRadius: 20, // Add border radius here
-    margin: 5, // Use margin for spacing
-    backgroundColor: "white", // Add a background color
-    paddingVertical: 10, // Add vertical padding
-    paddingHorizontal: 15, // Add horizontal padding
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    justifyContent: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "#fff",
+    borderRadius: 50,
+    shadowColor: "#bebebe",
+    shadowOffset: { width: -16, height: 16 },
+    shadowOpacity: 0.8,
+    shadowRadius: 32,
+    elevation: 10, // For Android shadow
   },
   catHeader: {
     flexDirection: "row",
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     flexShrink: 1, // Ensure the title doesn't get cut off
-    color: "red",
+    color: "black",
     textAlign: "center", // Center the text horizontally
   },
 });
