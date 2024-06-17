@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     marginHorizontal: 5,
-    width: 100,
+    width: 120,
     backgroundColor: "#000",
-    marginVertical: 5,
+    marginVertical: 10,
     borderRadius: 12,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 3,
     textAlign: "center",
+    color: "red",
   },
   cardBackground: {
     width: "100%",

@@ -41,24 +41,37 @@ const styles = StyleSheet.create({
   catContainer: {
     margin: 5,
     flex: 1,
-    height: 150,
+    height: 280,
   },
   catArrow: {
     width: 20,
     height: 15,
-    marginTop: 1,
+    marginLeft: 10,
+    marginTop: 3, // Add some spacing between the title and the arrow
   },
   catPress: {
-    flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    alignContent: "center",
+    justifyContent: "center", // Center the content horizontally
+    borderRadius: 20, // Add border radius here
+    margin: 5, // Use margin for spacing
+    backgroundColor: "white", // Add a background color
+    paddingVertical: 10, // Add vertical padding
+    paddingHorizontal: 15, // Add horizontal padding
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
   },
   catHeader: {
-    height: 30,
     flexDirection: "row",
   },
-  title: { fontSize: 24, fontWeight: "bold" },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    flexShrink: 1, // Ensure the title doesn't get cut off
+    color: "red",
+    textAlign: "center", // Center the text horizontally
+  },
 });
 
 export default CategoryContainer;

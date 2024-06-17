@@ -74,6 +74,7 @@ const LandingScreen = ({ navigation }) => {
         style={styles.backgroundImage}
       >
         <View style={styles.container}>
+          <View style={styles.banner}></View>
           <CategoryContainer
             title="Continue Reading"
             data={mangas}
@@ -112,6 +113,11 @@ const LandingScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  banner: {
+    height: 200,
+    width: "100%",
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
   backgroundImage: {
     flex: 1,
     resizeMode: "cover", // or 'contain'
