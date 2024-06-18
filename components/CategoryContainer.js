@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 3,
     elevation: 10, // For Android shadow
+    borderWidth: 0.5,
+    borderColor: "red",
   },
   catHeader: {
     flexDirection: "row",

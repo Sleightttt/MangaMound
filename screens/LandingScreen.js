@@ -40,6 +40,7 @@ const mangas = [
     title: "Demon Slayer",
     mangaId: "104",
     description: "Description",
+    cover: images.group,
   },
   {
     id: 5,
@@ -53,9 +54,16 @@ const mangas = [
     title: "Attack on Titan",
     mangaId: "106",
     description: "Description",
+    cover: images.group,
   },
   { id: 7, title: "Naruto", mangaId: "107", description: "Description" },
-  { id: 8, title: "Bleach", mangaId: "108", description: "Description" },
+  {
+    id: 8,
+    title: "Bleach",
+    mangaId: "108",
+    description: "Description",
+    cover: images.manga1,
+  },
   {
     id: 9,
     title: "One Punch Man",
@@ -277,6 +285,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 3,
     elevation: 10,
+    borderWidth: 0.5,
+    borderColor: "red",
   },
   mangaTitleContainer: {
     position: "absolute",
