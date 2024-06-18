@@ -57,10 +57,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: "#fff",
     borderRadius: 50,
-    shadowColor: "#bebebe",
-    shadowOffset: { width: -16, height: 16 },
+    shadowColor: "#000",
+    shadowOffset: { width: -2, height: 2 },
     shadowOpacity: 0.8,
-    shadowRadius: 32,
+    shadowRadius: 3,
     elevation: 10, // For Android shadow
   },
   catHeader: {
