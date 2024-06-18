@@ -8,6 +8,8 @@ const images = {
   lp_bg: require("../assets/images/lp_bg.png"),
   promo: require("../assets/images/promo.png"),
   manga1: require("../assets/images/manga1.png"),
+  romance: require("../assets/images/romance.png"),
+  group: require("../assets/images/group.png"),
 };
 
 const icons = {

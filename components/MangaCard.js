@@ -4,8 +4,8 @@ import { images } from "../constants";
 
 const MangaCard = ({ title }) => (
   <View style={styles.card}>
-    <Image source={images.manga1} style={styles.cardBackground} />
-    <Text style={styles.title}>{title}</Text>
+    <Image source={title.cover} style={styles.cardBackground} />
+    <Text style={styles.title}>{title.title}</Text>
   </View>
 );
 
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 12,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
     shadowRadius: 2,
   },
   title: {

@@ -28,7 +28,7 @@ const CategoryContainer = ({ title, data, onPress }) => {
         data={data}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => onPress(item.id)}>
-            <MangaCard title={item.title} />
+            <MangaCard title={item} />
           </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id}

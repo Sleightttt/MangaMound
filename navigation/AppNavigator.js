@@ -89,22 +89,21 @@ const AppNavigator = () => {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           headerLeftLabelVisible: true,
-          headerRight: () => (
-            <Ionicons
-              name="menu"
-              size={24}
-              color="black"
-              style={{ marginRight: 10 }}
-            />
-          ),
+          // headerRight: () => (
+          //   <Ionicons
+          //     name="menu"
+          //     size={24}
+          //     color="black"
+          //     style={{ marginRight: 10 }}
+          //   />
+          // ),
           headerTitle: () => (
             <Image
               source={images.mound}
               style={{
                 width: 60,
                 height: 80,
-                marginRight: 10,
-                marginBottom: 10,
+
                 objectFit: "cover",
               }}
             />
