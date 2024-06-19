@@ -5,7 +5,9 @@ import { images } from "../constants";
 const MangaCard = ({ title }) => (
   <View style={styles.card}>
     <Image source={title.cover} style={styles.cardBackground} />
-    <Text style={styles.title}>{title.title}</Text>
+    <View style={styles.cardH}>
+      <Text style={styles.title}>{title.title}</Text>
+    </View>
   </View>
 );
 
@@ -22,16 +24,28 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 2,
   },
+  cardH: {
+    position: "absolute",
+    top: 0,
+    width: "100%",
+
+    backgroundColor: "rgba(0, 17, 0, 0.4)",
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+  },
   title: {
-    margin: 10,
-    fontSize: 18,
+    marginBottom: 5,
+
+    fontSize: 16,
+    paddingTop: 5,
     fontWeight: "bold",
-    textShadowColor: "white",
-    textShadowOffset: { width: 2, height: 2 },
+    textShadowColor: "black",
+    textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2.5,
     textAlign: "center",
-    color: "black",
+    color: "white",
   },
+
   cardBackground: {
     width: "100%",
     height: "100%",

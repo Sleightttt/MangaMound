@@ -16,71 +16,77 @@ const screenWidth = Dimensions.get("window").width; // Get the screen width
 const mangas = [
   {
     id: 1,
-    title: "One Piece",
+    title: "Two Piece",
     mangaId: "101",
     description: "Description",
     cover: images.group,
   },
   {
     id: 2,
-    title: "Jujutsu Kaisen",
+    title: "Kenpo Kaisen",
     mangaId: "102",
     description: "Description",
     cover: images.manga1,
   },
   {
     id: 3,
-    title: "My Hero Academia",
+    title: "My Villian Academic",
     mangaId: "103",
     description: "Description",
     cover: images.romance,
   },
   {
     id: 4,
-    title: "Demon Slayer",
+    title: "Angel Slayer",
     mangaId: "104",
     description: "Description",
     cover: images.group,
   },
   {
     id: 5,
-    title: "Black Clover",
+    title: "White Clover",
     mangaId: "105",
     description: "Description",
     cover: images.romance,
   },
   {
     id: 6,
-    title: "Attack on Titan",
+    title: "Defence on Titan",
     mangaId: "106",
     description: "Description",
     cover: images.group,
   },
-  { id: 7, title: "Naruto", mangaId: "107", description: "Description" },
+  {
+    id: 7,
+    title: "Naruta",
+    mangaId: "107",
+    description: "Description",
+    cover: images.romance,
+  },
   {
     id: 8,
-    title: "Bleach",
+    title: "Ammonia",
     mangaId: "108",
     description: "Description",
     cover: images.manga1,
   },
   {
     id: 9,
-    title: "One Punch Man",
+    title: "One Punch Child",
     mangaId: "109",
     description: "Description",
     cover: images.romance,
   },
   {
     id: 11,
-    title: "Tokyo Revengers",
+    title: "Japan Revengers",
     mangaId: "110",
     description: "Description",
     cover: images.group,
   },
   {
     id: 12,
-    title: "Fairy Tail",
+    title: "Hairy Tail",
     mangaId: "111",
     description: "Description",
     cover: images.romance,
@@ -195,8 +201,8 @@ const LandingScreen = ({ navigation }) => {
             containerStyle={{ paddingVertical: 8 }}
             dotStyle={{
               marginTop: 5,
-              width: 10,
-              height: 10,
+              width: 15,
+              height: 15,
               borderRadius: 5,
               marginHorizontal: 8,
               backgroundColor: "red",
@@ -252,6 +258,8 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 20,
     overflow: "hidden",
+    borderColor: "black",
+    borderWidth: 1.5,
 
     // Shadow properties
   },
@@ -260,6 +268,8 @@ const styles = StyleSheet.create({
     height: "100%",
     resizeMode: "cover",
     justifyContent: "center",
+
+    // Shadow properties
   },
   backgroundImage: {
     flex: 1,
@@ -286,7 +296,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 10,
     borderWidth: 0.5,
-    borderColor: "red",
+    borderColor: "black",
   },
   mangaTitleContainer: {
     position: "absolute",

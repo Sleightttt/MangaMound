@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 15,
     marginLeft: 10,
-    marginTop: 3, // Add some spacing between the title and the arrow
+    marginTop: 3,
   },
   catPress: {
     flexDirection: "row",
@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 50,
     shadowColor: "#000",
-    shadowOffset: { width: -2, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 3,
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
     elevation: 10, // For Android shadow
     borderWidth: 0.5,
-    borderColor: "red",
+    borderColor: "black",
   },
   catHeader: {
     flexDirection: "row",
@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    flexShrink: 1, // Ensure the title doesn't get cut off
+    flexShrink: 1,
     color: "black",
-    textAlign: "center", // Center the text horizontally
+    textAlign: "center",
   },
 });
 
