@@ -22,7 +22,6 @@ const CategoryContainer = ({ title, data, onPress }) => {
           <Image source={icons.rightArrow} style={styles.catArrow} />
         </TouchableOpacity>
       </View>
-
       <FlatList
         horizontal
         data={data}
@@ -40,6 +39,7 @@ const CategoryContainer = ({ title, data, onPress }) => {
 const styles = StyleSheet.create({
   catContainer: {
     margin: 5,
+    marginTop: 0,
     flex: 1,
     height: 280,
   },
@@ -61,9 +61,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     shadowRadius: 2,
-    elevation: 10, // For Android shadow
+    elevation: 10,
     borderWidth: 0.5,
-    borderColor: "black",
+    borderColor: "#242424",
   },
   catHeader: {
     flexDirection: "row",
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     flexShrink: 1,
-    color: "black",
+    color: "#242424",
     textAlign: "center",
   },
 });

@@ -28,14 +28,12 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     width: "100%",
-
-    backgroundColor: "rgba(0, 17, 0, 0.4)",
+    backgroundColor: "rgba(24, 24, 24, 0.7)",
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
   },
   title: {
     marginBottom: 5,
-
     fontSize: 16,
     paddingTop: 5,
     fontWeight: "bold",
@@ -45,7 +43,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
   },
-
   cardBackground: {
     width: "100%",
     height: "100%",

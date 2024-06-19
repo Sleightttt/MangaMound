@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Animated, Easing, Image, TouchableOpacity } from "react-native";
 import {
-  NavigationContainer,
-  useNavigationState,
-} from "@react-navigation/native";
+  Animated,
+  Easing,
+  Image,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -26,7 +29,12 @@ const MangaStack = () => (
     <Stack.Screen
       name="MangaDetails"
       component={MangaDetailsScreen}
-      options={{ title: "Manga Details", headerShown: false }}
+      options={{
+        title: "Manga Details",
+        headerStyle: { backgroundColor: "#242424" },
+        headerTintColor: "#fff",
+        headerShown: false,
+      }}
     />
   </Stack.Navigator>
 );
@@ -86,24 +94,21 @@ const AppNavigator = () => {
 
   return (
     <NavigationContainer>
+      {/* Set the StatusBar color */}
+      <StatusBar barStyle="light-content" backgroundColor="#242424" />
+
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          headerLeftLabelVisible: true,
-          // headerRight: () => (
-          //   <Ionicons
-          //     name="menu"
-          //     size={24}
-          //     color="black"
-          //     style={{ marginRight: 10 }}
-          //   />
-          // ),
+          headerStyle: {
+            backgroundColor: "#242424",
+          },
+          headerTintColor: "#fff",
           headerTitle: () => (
             <Image
               source={images.mound}
               style={{
                 width: 60,
                 height: 80,
-
                 objectFit: "cover",
               }}
             />
@@ -111,7 +116,12 @@ const AppNavigator = () => {
           tabBarActiveTintColor: "red",
           tabBarInactiveTintColor: "gray",
           tabBarHideOnKeyboard: true,
+          tabBarStyle: {
+            backgroundColor: "#242424",
+            borderTopWidth: 1,
 
+            borderTopColor: "grey",
+          },
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             if (route.name === "Manga") {

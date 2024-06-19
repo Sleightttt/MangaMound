@@ -188,8 +188,8 @@ const LandingScreen = ({ navigation }) => {
             ref={carouselRef}
             data={carouselItems}
             renderItem={renderCarouselItem}
-            sliderWidth={screenWidth} // Use dynamic screen width
-            itemWidth={screenWidth * 0.8} // Adjust item width based on screen width
+            sliderWidth={screenWidth}
+            itemWidth={screenWidth * 0.8}
             onSnapToItem={(index) => {
               setActiveSlide(index);
               resetAutoPlay();
@@ -200,7 +200,6 @@ const LandingScreen = ({ navigation }) => {
             activeDotIndex={activeSlide}
             containerStyle={{ paddingVertical: 8 }}
             dotStyle={{
-              marginTop: 5,
               width: 15,
               height: 15,
               borderRadius: 5,
@@ -258,27 +257,22 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 20,
     overflow: "hidden",
-    borderColor: "black",
+    borderColor: "#242424",
     borderWidth: 1.5,
-
-    // Shadow properties
   },
   bannerImage: {
     width: "100%",
     height: "100%",
     resizeMode: "cover",
     justifyContent: "center",
-
-    // Shadow properties
   },
   backgroundImage: {
     flex: 1,
   },
   promoText: {
-    color: "black",
+    color: "#242424",
     padding: 5,
     borderRadius: 20,
-
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -296,7 +290,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 10,
     borderWidth: 0.5,
-    borderColor: "black",
+    borderColor: "#242424",
   },
   mangaTitleContainer: {
     position: "absolute",
@@ -306,7 +300,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 20,
     backgroundColor: "red",
-    borderBottomLeftRadius: 20,
+    borderBottomLeftRadius: 18,
     borderTopRightRadius: 20,
     shadowColor: "#000",
     shadowOffset: { width: 0.5, height: -0.5 },
@@ -321,7 +315,6 @@ const styles = StyleSheet.create({
     width: "auto",
     paddingVertical: 5,
     paddingHorizontal: 20,
-
     borderBottomRightRadius: 20,
     borderTopLeftRadius: 20,
   },
