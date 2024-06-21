@@ -11,7 +11,7 @@ import Carousel, { Pagination } from "react-native-snap-carousel";
 import CategoryContainer from "../components/CategoryContainer";
 import { images } from "../constants";
 
-const screenWidth = Dimensions.get("window").width; // Get the screen width
+const screenWidth = Dimensions.get("window").width;
 
 const mangas = [
   {
