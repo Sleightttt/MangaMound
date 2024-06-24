@@ -14,7 +14,6 @@ const favorites = [
   { id: "108", title: "Manga Title 8" },
   { id: "109", title: "Manga Title 9" },
   { id: "110", title: "Manga Title 10" },
-  // Add more favorites
 ];
 
 const FavoritesScreen = ({ navigation }) => {
