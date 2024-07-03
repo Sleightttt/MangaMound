@@ -3,13 +3,11 @@ import { View, Text, StyleSheet } from "react-native";
 
 const MangaDetailsScreen = ({ route }) => {
   const { mangaId } = route.params;
-  // Fetch manga details using mangaId
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Manga Title {mangaId}</Text>
       <Text style={styles.description}>Description of Manga {mangaId}</Text>
-      {/* Render more details as needed */}
     </View>
   );
 };
