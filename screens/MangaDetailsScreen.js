@@ -4,7 +4,6 @@ import { View, Text, StyleSheet } from "react-native";
 
 const MangaDetailsScreen = ({ route }) => {
   const { mangaId } = route.params;
-  // Static content for demonstration
   const mangaDetails = {
     1: {
       title: "One Piece",
@@ -72,7 +71,6 @@ const MangaDetailsScreen = ({ route }) => {
     <View style={styles.container}>
       <Text style={styles.title}>{manga.title}</Text>
       <Text style={styles.description}>{manga.description}</Text>
-      {/* Additional details and components can be added here */}
     </View>
   );
 };
