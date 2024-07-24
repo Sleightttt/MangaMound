@@ -1,6 +1,7 @@
 // screens/MangaDetailsScreen.js
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
+import { images } from "../constants";
 
 const MangaDetailsScreen = ({ route }) => {
   const { mangaId } = route.params;
@@ -69,7 +70,11 @@ const MangaDetailsScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{manga.title}</Text>
+      <View style={styles.titleCard}>
+        <Image source={images.onepiece} style={styles.mangaTitleBG} />
+        <Text style={styles.title}>{manga.title}</Text>
+      </View>
+
       <Text style={styles.description}>{manga.description}</Text>
     </View>
   );
@@ -77,7 +82,23 @@ const MangaDetailsScreen = ({ route }) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
-  title: { fontSize: 24, fontWeight: "bold" },
+  mangaTitleBG: {
+    width: "100%",
+    height: 200,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  titleCard: {
+    borderColor: "rgba(24, 24, 24, 0.7)",
+    borderWidth: 1,
+    borderRadius: 20,
+    marginBottom: 10,
+  },
+  title: {
+    padding: 10,
+    fontSize: 24,
+    fontWeight: "bold",
+  },
   description: { fontSize: 16, marginTop: 10 },
 });
 
