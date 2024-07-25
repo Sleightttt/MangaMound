@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { images } from "../constants";
 
 const MangaCard = ({ title }) => (
   <View style={styles.card}>
