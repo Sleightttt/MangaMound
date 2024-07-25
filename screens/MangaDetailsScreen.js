@@ -1,6 +1,6 @@
 // screens/MangaDetailsScreen.js
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, FlatList } from "react-native";
 import { images } from "../constants";
 
 const MangaDetailsScreen = ({ route }) => {
@@ -74,7 +74,14 @@ const MangaDetailsScreen = ({ route }) => {
         <Image source={images.onepiece} style={styles.mangaTitleBG} />
         <Text style={styles.title}>{manga.title}</Text>
       </View>
-
+      <View>
+        <FlatList
+          data={mangaDetails}
+          renderItem={({ item }) => <MangaCard title={item} />}
+          keyExtractor={(item) => item.title}
+          verticle
+        />
+      </View>
       <Text style={styles.description}>{manga.description}</Text>
     </View>
   );
