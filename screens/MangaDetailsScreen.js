@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   chapterTitle: {
     fontSize: 18,
-    color: "white",
+    color: "red",
   },
   titleCard: {
     borderColor: "rgba(24, 24, 24, 0.7)",
