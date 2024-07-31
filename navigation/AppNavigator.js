@@ -18,7 +18,7 @@ import { images } from "../constants";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
+//main stack with landing page and mangadetails page
 const MangaStack = () => (
   <Stack.Navigator>
     <Stack.Screen
