@@ -14,6 +14,7 @@ import LandingScreen from "../screens/LandingScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
 import MangaDetailsScreen from "../screens/MangaDetailsScreen";
+import ChapterScreen from "../screens/ChapterScreen";
 import { images } from "../constants";
 
 const Tab = createBottomTabNavigator();
@@ -35,6 +36,11 @@ const MangaStack = () => (
         headerTintColor: "#fff",
         headerShown: false,
       }}
+    />
+    <Stack.Screen
+      name="ChapterScreen"
+      component={ChapterScreen}
+      options={{ headerShown: false }}
     />
   </Stack.Navigator>
 );

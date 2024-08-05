@@ -18,7 +18,6 @@ const ProfileScreen = () => {
       <TextInput style={styles.input} value={name} onChangeText={setName} />
       <Text style={styles.label}>Donations Made</Text>
       <TextInput style={styles.input} value={name} onChangeText={setName} />
-
       <Button title="Save" onPress={handleSave} />
     </View>
   );

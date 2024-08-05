@@ -1,114 +1,70 @@
-// screens/MangaDetailsScreen.js
-import React from "react";
+import React, { useRef } from "react";
 import {
   View,
   Text,
   StyleSheet,
   Image,
+  Animated,
   FlatList,
   TouchableOpacity,
 } from "react-native";
 import { images } from "../constants";
+import { useNavigation } from "@react-navigation/native";
 
 const MangaDetailsScreen = ({ route }) => {
+  const navigation = useNavigation();
   const { mangaId } = route.params;
+  const scrollY = useRef(new Animated.Value(0)).current;
+
   const mangaDetails = {
     1: {
       title: "One Piece",
-      description: "An epic journey of pirates.",
+      description:
+        "An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.",
       cover: images.group,
       chapters: [
         "Chapter 1",
         "Chapter 2",
         "Chapter 3",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
-        "Chapter 1",
-        "Chapter 2",
+        "Chapter 4",
+        "Chapter 5",
+        "Chapter 6",
+        "Chapter 7",
+        "Chapter 8",
+        "Chapter 9",
+        "Chapter 10",
+        "Chapter 11",
+        "Chapter 12",
+        "Chapter 13",
+        "Chapter 14",
+        "Chapter 15",
+        "Chapter 16",
+        "Chapter 17",
+        "Chapter 18",
+        "Chapter 19",
+        "Chapter 20",
+        "Chapter 21",
+        "Chapter 22",
+        "Chapter 23",
+        // Add more chapters as needed
       ],
     },
     2: {
-      title: "Jujutsu Kaisen",
-      description: "A story of sorcerers and curses.",
-      cover: images.manga1,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
-    3: {
-      title: "My Hero Academia",
-      description: "A world of heroes and villains.",
-      cover: images.romance,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
-    4: {
-      title: "Demon Slayer",
-      description: "A quest to save family from demons.",
+      title: "One Piece",
+      description:
+        "An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.",
       cover: images.group,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
+      chapters: [
+        "Chapter 1",
+        "Chapter 2",
+        "Chapter 3",
+        "Chapter 4",
+        "Chapter 5",
+
+        // Add more chapters as needed
+      ],
     },
-    5: {
-      title: "Black Clover",
-      description: "A tale of magic and adventure.",
-      cover: images.romance,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
-    6: {
-      title: "Attack on Titan",
-      description: "Humanity's fight against titans.",
-      cover: images.group,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
-    7: {
-      title: "Naruto",
-      description: "A ninja's journey to become Hokage.",
-      cover: images.romance,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
-    8: {
-      title: "Bleach",
-      description: "A soul reaper's battle against darkness.",
-      cover: images.group,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
-    9: {
-      title: "One Punch Man",
-      description: "A hero who can defeat anyone with one punch.",
-      cover: images.romance,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
-    10: {
-      title: "Tokyo Revengers",
-      description: "A time-traveling gang story.",
-      cover: images.manga1,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
-    11: {
-      title: "Fairy Tail",
-      description: "Magical adventures with wizards.",
-      cover: images.romance,
-      chapters: ["Chapter 1", "Chapter 2", "Chapter 3"],
-    },
+    // Add other manga details here
   };
 
   const manga = mangaDetails[mangaId] || {
@@ -130,17 +86,54 @@ const MangaDetailsScreen = ({ route }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleCard}>
-        <Image source={images.onepiece} style={styles.mangaTitleBG} />
+        <Image source={manga.cover} style={styles.mangaTitleBG} />
         <Text style={styles.title}>{manga.title}</Text>
       </View>
       <Text style={styles.description}>{manga.description}</Text>
-      <View style={styles.chapterList}>
-        <FlatList
+      <View style={styles.chapterListContainer}>
+        <Animated.FlatList
           data={manga.chapters}
           renderItem={renderChapterItem}
           keyExtractor={(item, index) => `${mangaId}-chapter-${index}`}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+            { useNativeDriver: false }
+          )}
+          contentContainerStyle={styles.chapterList}
         />
+        {manga.chapters.length > 6 && (
+          <ScrollIndicator
+            scrollY={scrollY}
+            itemCount={manga.chapters.length}
+          />
+        )}
       </View>
+    </View>
+  );
+};
+
+const ScrollIndicator = ({ scrollY, itemCount }) => {
+  const indicatorHeight = 10; // Height of the white ball indicator
+  const listHeight = 290; // Height of the FlatList container
+  const contentHeight = itemCount * 43.5; // Assuming each item has a height of 40
+
+  const translateY = scrollY.interpolate({
+    inputRange: [0, contentHeight - listHeight],
+    outputRange: [0, listHeight - indicatorHeight],
+    extrapolate: "clamp",
+  });
+
+  return (
+    <View style={styles.scrollIndicatorContainer}>
+      <View style={styles.scrollIndicatorLine} />
+      <Animated.View
+        style={[
+          styles.scrollIndicatorBall,
+          {
+            transform: [{ translateY }],
+          },
+        ]}
+      />
     </View>
   );
 };
@@ -149,12 +142,17 @@ const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: "black" },
   mangaTitleBG: {
     width: "100%",
+    resizeMode: "stretch",
     height: 200,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
-  chapterList: {
+  chapterListContainer: {
     flex: 1,
+    flexDirection: "row",
+    alignItems: "flex-start",
+  },
+  chapterList: {
     padding: 10,
     backgroundColor: "rgba(24, 24, 24, 0.7)",
     borderRadius: 20,
@@ -180,12 +178,31 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 24,
     fontWeight: "bold",
+    color: "white",
   },
   description: {
     fontSize: 16,
     marginTop: 10,
     color: "white",
-    marginBottom: 10,
+    marginBottom: 20,
+    marginLeft: 12,
+  },
+  scrollIndicatorContainer: {
+    width: 10,
+    alignItems: "center",
+    marginLeft: 5,
+  },
+  scrollIndicatorLine: {
+    width: 2,
+    flex: 1,
+    backgroundColor: "red",
+  },
+  scrollIndicatorBall: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: "white",
+    position: "absolute",
   },
 });
 
