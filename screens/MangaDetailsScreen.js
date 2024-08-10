@@ -60,11 +60,8 @@ const MangaDetailsScreen = ({ route }) => {
         "Chapter 3",
         "Chapter 4",
         "Chapter 5",
-
-        // Add more chapters as needed
       ],
     },
-    // Add other manga details here
   };
 
   const manga = mangaDetails[mangaId] || {
