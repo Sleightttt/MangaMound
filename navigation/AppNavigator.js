@@ -16,6 +16,7 @@ import FavoritesScreen from "../screens/FavoritesScreen";
 import MangaDetailsScreen from "../screens/MangaDetailsScreen";
 import ChapterScreen from "../screens/ChapterScreen";
 import { images } from "../constants";
+import SearchScreen from "../screens/SearchScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -40,6 +41,16 @@ const MangaStack = () => (
     <Stack.Screen
       name="ChapterScreen"
       component={ChapterScreen}
+      options={{ headerShown: false }}
+    />
+  </Stack.Navigator>
+);
+
+const SearchStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="SearchTab"
+      component={SearchScreen}
       options={{ headerShown: false }}
     />
   </Stack.Navigator>
@@ -80,7 +91,12 @@ const AnimatedIcon = ({ name, size, color, focused, activeTab, routeName }) => {
 
   return (
     <Animated.View style={{ transform: [{ translateY: shake }] }}>
-      <Ionicons name={name} size={size} color={color} />
+      <Ionicons
+        name={name}
+        size={size}
+        color={color}
+        style={{ marginTop: 10 }}
+      />
     </Animated.View>
   );
 };
@@ -136,6 +152,8 @@ const AppNavigator = () => {
               iconName = focused ? "heart" : "heart-outline";
             } else if (route.name === "Profile") {
               iconName = focused ? "person" : "person-outline";
+            } else if (route.name === "Search") {
+              iconName = focused ? "search" : "search-outline";
             }
             return (
               <AnimatedIcon
@@ -160,6 +178,7 @@ const AppNavigator = () => {
         })}
       >
         <Tab.Screen name="Manga" component={MangaStack} />
+        <Tab.Screen name="Search" component={SearchStack} />
         <Tab.Screen name="Favorites" component={FavoritesScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
