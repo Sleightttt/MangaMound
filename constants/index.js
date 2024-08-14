@@ -10,6 +10,9 @@ const images = {
   manga1: require("../assets/images/manga1.png"),
   romance: require("../assets/images/romance.png"),
   group: require("../assets/images/group.png"),
+  jjk: require("../assets/images/jjk.png"),
+  boruto: require("../assets/images/boruto.jpg"),
+  creature: require("../assets/images/creature.png"),
 };
 
 const icons = {

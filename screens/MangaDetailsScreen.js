@@ -67,6 +67,7 @@ const MangaDetailsScreen = ({ route }) => {
   const manga = mangaDetails[mangaId] || {
     title: "Unknown Manga",
     description: "No description available.",
+    chapters: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
   };
 
   const renderChapterItem = ({ item }) => (
