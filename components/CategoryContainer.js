@@ -1,16 +1,40 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   View,
-  Text,
   FlatList,
   TouchableOpacity,
   StyleSheet,
   Image,
+  Text,
 } from "react-native";
 import MangaCard from "./MangaCard";
 import { icons } from "../constants";
 
 const CategoryContainer = ({ title, data, onPress }) => {
+  const scrollBarRef = useRef(null);
+
+  const handleScroll = (event) => {
+    //current position of the scroll view
+    const contentOffsetX = event.nativeEvent.contentOffset.x;
+    //total width of the scroll view
+    const contentWidth = event.nativeEvent.contentSize.width;
+    //length of the visible part of the scroll view
+    const visibleWidth = event.nativeEvent.layoutMeasurement.width;
+
+    // Calculate the width of the scroll bar as a ratio of the visible width to the total content width
+    const scrollBarWidth = (visibleWidth / contentWidth) * visibleWidth;
+    // Calculate the position of the scroll bar based on the scroll position
+    const scrollBarPosition = (contentOffsetX / contentWidth) * visibleWidth;
+
+    // Update the custom scroll bar's width and position
+    scrollBarRef.current.setNativeProps({
+      style: {
+        width: scrollBarWidth,
+        transform: [{ translateX: scrollBarPosition }],
+      },
+    });
+  };
+
   return (
     <View style={styles.catContainer}>
       <View style={styles.catHeader}>
@@ -31,14 +55,21 @@ const CategoryContainer = ({ title, data, onPress }) => {
           </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id}
+        showsHorizontalScrollIndicator={false} // Hide the native scrollbar
+        onScroll={handleScroll}
+        scrollEventThrottle={16} // Limits the number of scroll events, helps with performance
       />
+      <View style={styles.customScrollBarContainer}>
+        <View ref={scrollBarRef} style={styles.customScrollBar} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   catContainer: {
-    margin: 5,
+    marginTop: 5,
+    marginBottom: 5,
     marginTop: 0,
     flex: 1,
     height: 280,
@@ -67,6 +98,7 @@ const styles = StyleSheet.create({
   },
   catHeader: {
     flexDirection: "row",
+    marginLeft: 5,
   },
   title: {
     fontSize: 24,
@@ -74,6 +106,21 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     color: "#242424",
     textAlign: "center",
+  },
+  customScrollBarContainer: {
+    marginLeft: 5,
+
+    height: 2,
+    width: "100%",
+    backgroundColor: "#252525",
+    position: "absolute",
+    bottom: 0,
+  },
+  customScrollBar: {
+    height: 2,
+    backgroundColor: "red",
+    position: "absolute",
+    left: 0,
   },
 });
 
