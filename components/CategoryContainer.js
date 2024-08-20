@@ -108,10 +108,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   customScrollBarContainer: {
-    marginLeft: 5,
-
     height: 2,
-    width: "100%",
+    width: "90%",
     backgroundColor: "#252525",
     position: "absolute",
     bottom: 0,

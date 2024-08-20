@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useState } from "react";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 const SearchScreen = () => {
   const [search, setSearch] = useState("");
