@@ -186,21 +186,32 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   scrollIndicatorContainer: {
-    width: 10,
+    width: 14, // Adjusted for larger ball
     alignItems: "center",
     marginLeft: 5,
+    backgroundColor: "rgba(255, 255, 255, 0.1)", // Slightly translucent background
+    borderRadius: 7, // Rounded container
+    padding: 2,
   },
   scrollIndicatorLine: {
-    width: 2,
+    width: 3, // Slightly thicker line
     flex: 1,
-    backgroundColor: "red",
+    backgroundColor: "#262626", // Gradient color
+    borderRadius: 1.5,
   },
   scrollIndicatorBall: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: "white",
+    width: 12, // Slightly larger ball
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: "#fff", // Solid color or gradient
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 5, // For Android shadow
     position: "absolute",
+    borderColor: "rgba(255, 255, 255, 0.3)", // Subtle border
+    borderWidth: 1,
   },
 });
 
