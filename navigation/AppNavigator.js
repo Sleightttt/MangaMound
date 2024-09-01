@@ -5,6 +5,8 @@ import {
   Image,
   TouchableOpacity,
   StatusBar,
+  View,
+  StyleSheet,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -17,10 +19,11 @@ import MangaDetailsScreen from "../screens/MangaDetailsScreen";
 import ChapterScreen from "../screens/ChapterScreen";
 import { images } from "../constants";
 import SearchScreen from "../screens/SearchScreen";
+import LoadingScreen from "../components/LoadingScreen"; // Import your LoadingScreen component
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-//main stack with landing page and mangadetails page
+
 const MangaStack = () => (
   <Stack.Navigator>
     <Stack.Screen
@@ -109,81 +112,116 @@ const TabBarButton = ({ children, onPress }) => (
 
 const AppNavigator = () => {
   const [activeTab, setActiveTab] = useState("Manga");
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    // Simulate data loading or other async operations
+    const loadData = async () => {
+      // Your loading logic goes here. This could be an API call or data fetching operation.
+      // Simulating a delay with setTimeout
+      setTimeout(() => {
+        setIsLoading(false); // Hide the loading animation after loading is complete
+      }, 3000);
+    };
+
+    loadData();
+  }, []);
 
   const handleTabPress = (routeName) => {
     setActiveTab(routeName);
   };
 
   return (
-    <NavigationContainer>
-      {/* Set the StatusBar color */}
-      <StatusBar barStyle="light-content" backgroundColor="#242424" />
+    <View style={styles.container}>
+      <NavigationContainer>
+        {/* Set the StatusBar color */}
+        <StatusBar barStyle="light-content" backgroundColor="#242424" />
 
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          headerStyle: {
-            backgroundColor: "#242424",
-          },
-          headerTintColor: "#fff",
-          headerTitle: () => (
-            <Image
-              source={images.mound}
-              style={{
-                width: 60,
-                height: 80,
-                objectFit: "cover",
-              }}
-            />
-          ),
-          tabBarActiveTintColor: "red",
-          tabBarInactiveTintColor: "gray",
-          tabBarHideOnKeyboard: true,
-          tabBarStyle: {
-            backgroundColor: "#242424",
-            borderTopWidth: 1,
-
-            borderTopColor: "grey",
-          },
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            if (route.name === "Manga") {
-              iconName = focused ? "book" : "book-outline";
-            } else if (route.name === "Favorites") {
-              iconName = focused ? "heart" : "heart-outline";
-            } else if (route.name === "Profile") {
-              iconName = focused ? "person" : "person-outline";
-            } else if (route.name === "Search") {
-              iconName = focused ? "search" : "search-outline";
-            }
-            return (
-              <AnimatedIcon
-                name={iconName}
-                size={size}
-                color={color}
-                focused={focused}
-                activeTab={activeTab}
-                routeName={route.name}
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            headerStyle: {
+              backgroundColor: "#242424",
+            },
+            headerTintColor: "#fff",
+            headerTitle: () => (
+              <Image
+                source={images.mound}
+                style={{
+                  width: 60,
+                  height: 80,
+                  objectFit: "cover",
+                }}
               />
-            );
-          },
-          tabBarButton: (props) => (
-            <TabBarButton
-              {...props}
-              onPress={() => {
-                handleTabPress(route.name);
-                props.onPress();
-              }}
-            />
-          ),
-        })}
-      >
-        <Tab.Screen name="Manga" component={MangaStack} />
-        <Tab.Screen name="Search" component={SearchStack} />
-        <Tab.Screen name="Favorites" component={FavoritesScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+            ),
+            tabBarActiveTintColor: "red",
+            tabBarInactiveTintColor: "gray",
+            tabBarHideOnKeyboard: true,
+            tabBarStyle: {
+              backgroundColor: "#242424",
+              borderTopWidth: 1,
+              borderTopColor: "grey",
+            },
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              if (route.name === "Manga") {
+                iconName = focused ? "book" : "book-outline";
+              } else if (route.name === "Favorites") {
+                iconName = focused ? "heart" : "heart-outline";
+              } else if (route.name === "Profile") {
+                iconName = focused ? "person" : "person-outline";
+              } else if (route.name === "Search") {
+                iconName = focused ? "search" : "search-outline";
+              }
+              return (
+                <AnimatedIcon
+                  name={iconName}
+                  size={size}
+                  color={color}
+                  focused={focused}
+                  activeTab={activeTab}
+                  routeName={route.name}
+                />
+              );
+            },
+            tabBarButton: (props) => (
+              <TabBarButton
+                {...props}
+                onPress={() => {
+                  handleTabPress(route.name);
+                  props.onPress();
+                }}
+              />
+            ),
+          })}
+        >
+          <Tab.Screen name="Manga" component={MangaStack} />
+          <Tab.Screen name="Search" component={SearchStack} />
+          <Tab.Screen name="Favorites" component={FavoritesScreen} />
+          <Tab.Screen name="Profile" component={ProfileScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+
+      {/* Show the loading screen on top of everything else */}
+      {isLoading && (
+        <View style={styles.loadingOverlay}>
+          <LoadingScreen />
+        </View>
+      )}
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  loadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#242424",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
+  },
+});
 
 export default AppNavigator;
