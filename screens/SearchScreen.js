@@ -49,7 +49,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginLeft: 10,
   },
-  searchButtonText: { color: "white" },
+  searchButtonText: {
+    color: "white",
+    shadowColor: "#000",
+    shadowOffset: { width: -2, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 10,
+  },
 });
 
 export default SearchScreen;
