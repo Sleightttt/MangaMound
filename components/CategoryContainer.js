@@ -14,17 +14,26 @@ const CategoryContainer = ({ title, data, onPress }) => {
   const scrollBarRef = useRef(null);
 
   const handleScroll = (event) => {
-    //current position of the scroll view
     const contentOffsetX = event.nativeEvent.contentOffset.x;
-    //total width of the scroll view
     const contentWidth = event.nativeEvent.contentSize.width;
-    //length of the visible part of the scroll view
     const visibleWidth = event.nativeEvent.layoutMeasurement.width;
 
+    // 95% width of the container
+    const containerWidth = visibleWidth * 0.95;
+
     // Calculate the width of the scroll bar as a ratio of the visible width to the total content width
-    const scrollBarWidth = (visibleWidth / contentWidth) * visibleWidth;
+    let scrollBarWidth = (visibleWidth / contentWidth) * containerWidth;
+    scrollBarWidth = Math.max(scrollBarWidth, 20); // Minimum scrollbar width for visibility
+
     // Calculate the position of the scroll bar based on the scroll position
-    const scrollBarPosition = (contentOffsetX / contentWidth) * visibleWidth;
+    let scrollBarPosition = (contentOffsetX / contentWidth) * containerWidth;
+
+    // Clamp the scroll bar position so it doesn't exceed the left (0) or right end of the container
+    scrollBarPosition = Math.max(0, scrollBarPosition); // Prevent scrolling past the left edge
+    scrollBarPosition = Math.min(
+      scrollBarPosition,
+      containerWidth - scrollBarWidth
+    ); // Prevent scrolling past the right edge
 
     // Update the custom scroll bar's width and position
     scrollBarRef.current.setNativeProps({
@@ -34,7 +43,6 @@ const CategoryContainer = ({ title, data, onPress }) => {
       },
     });
   };
-
   return (
     <View style={styles.catContainer}>
       <View style={styles.catHeader}>
@@ -108,9 +116,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   customScrollBarContainer: {
+    flex: 1,
+    alignSelf: "center",
     height: 2,
-    width: "90%",
-    backgroundColor: "#252525",
+    width: "95%",
+
+    backgroundColor: "#242424",
     position: "absolute",
     bottom: 0,
   },
@@ -119,6 +130,11 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     position: "absolute",
     left: 0,
+    shadowColor: "#000",
+    shadowOffset: { width: -1, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 10,
   },
 });
 
