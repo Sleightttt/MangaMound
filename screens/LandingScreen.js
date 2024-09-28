@@ -10,6 +10,15 @@ import {
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import CategoryContainer from "../components/CategoryContainer";
 import { images } from "../constants";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+
+const mangaData = {
+  title: "Naruto",
+  author: "Masashi Kishimoto",
+  genre: "Action, Adventure",
+  chapters: 700,
+};
 
 const screenWidth = Dimensions.get("window").width;
 
