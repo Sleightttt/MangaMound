@@ -205,6 +205,10 @@ const LandingScreen = ({ navigation }) => {
               borderRadius: 5,
               marginHorizontal: 8,
               backgroundColor: "red",
+              shadowColor: "#000",
+              shadowOffset: { width: 2, height: 2 },
+              shadowOpacity: 0.9,
+              shadowRadius: 2,
             }}
             inactiveDotOpacity={0.6}
             inactiveDotScale={0.4}
