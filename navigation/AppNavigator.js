@@ -29,7 +29,23 @@ const MangaStack = () => (
     <Stack.Screen
       name="Landing"
       component={LandingScreen}
-      options={{ headerShown: false }}
+      options={{
+        headerStyle: {
+          backgroundColor: "#242424",
+        },
+        headerTintColor: "#fff",
+        headerShown: true,
+        headerTitle: () => (
+          <Image
+            source={images.mound}
+            style={{
+              width: 60,
+              height: 80,
+              objectFit: "cover",
+            }}
+          />
+        ),
+      }}
     />
     <Stack.Screen
       name="MangaDetails"
@@ -38,23 +54,117 @@ const MangaStack = () => (
         title: "Manga Details",
         headerStyle: { backgroundColor: "#242424" },
         headerTintColor: "#fff",
-        headerShown: false,
+        headerShown: true,
+
+        headerTitle: () => (
+          <Image
+            source={images.mound}
+            style={{
+              width: 60,
+              height: 80,
+              objectFit: "cover",
+            }}
+          />
+        ),
       }}
     />
     <Stack.Screen
       name="ChapterScreen"
       component={ChapterScreen}
-      options={{ headerShown: false }}
+      options={{
+        headerStyle: {
+          backgroundColor: "#242424",
+        },
+        headerTintColor: "#fff",
+        headerShown: true,
+        headerTitle: () => (
+          <Image
+            source={images.mound}
+            style={{
+              width: 60,
+              height: 80,
+              objectFit: "cover",
+            }}
+          />
+        ),
+      }}
     />
   </Stack.Navigator>
 );
 
+const ProfileStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="ProfileTab"
+      component={ProfileScreen}
+      options={{
+        title: "Profile", // Customize as needed
+        headerStyle: { backgroundColor: "#242424" },
+        headerTintColor: "#fff",
+        headerShown: true,
+
+        headerTitle: () => (
+          <Image
+            source={images.mound}
+            style={{
+              width: 60,
+              height: 80,
+              objectFit: "cover",
+            }}
+          />
+        ),
+      }}
+    />
+  </Stack.Navigator>
+);
+
+const FavoritesStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="FavoritesTab"
+      component={FavoritesScreen}
+      options={{
+        title: "Favorites", // Customize as needed
+        headerStyle: { backgroundColor: "#242424" },
+        headerTintColor: "#fff",
+        headerShown: true,
+
+        headerTitle: () => (
+          <Image
+            source={images.mound}
+            style={{
+              width: 60,
+              height: 80,
+              objectFit: "cover",
+            }}
+          />
+        ),
+      }}
+    />
+  </Stack.Navigator>
+);
 const SearchStack = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="SearchTab"
       component={SearchScreen}
-      options={{ headerShown: false }}
+      options={{
+        headerStyle: {
+          backgroundColor: "#242424",
+        },
+        headerTintColor: "#fff",
+        headerShown: true,
+        headerTitle: () => (
+          <Image
+            source={images.mound}
+            style={{
+              width: 60,
+              height: 80,
+              objectFit: "cover",
+            }}
+          />
+        ),
+      }}
     />
   </Stack.Navigator>
 );
@@ -153,6 +263,7 @@ const AppNavigator = () => {
                 }}
               />
             ),
+            headerShown: false,
             tabBarActiveTintColor: "red",
             tabBarInactiveTintColor: "gray",
             tabBarHideOnKeyboard: true,
@@ -196,8 +307,8 @@ const AppNavigator = () => {
         >
           <Tab.Screen name="Manga" component={MangaStack} />
           <Tab.Screen name="Search" component={SearchStack} />
-          <Tab.Screen name="Favorites" component={FavoritesScreen} />
-          <Tab.Screen name="Profile" component={ProfileScreen} />
+          <Tab.Screen name="Favorites" component={FavoritesStack} />
+          <Tab.Screen name="Profile" component={ProfileStack} />
         </Tab.Navigator>
       </NavigationContainer>
 

@@ -15,7 +15,8 @@ const MangaDetailsScreen = ({ route }) => {
   const navigation = useNavigation();
   const { mangaId } = route.params;
   const scrollY = useRef(new Animated.Value(0)).current;
-
+  const [contentHeight, setContentHeight] = React.useState(0);
+  const [containerHeight, setContainerHeight] = React.useState(0);
   const mangaDetails = {
     1: {
       title: "One Piece",
@@ -88,7 +89,10 @@ const MangaDetailsScreen = ({ route }) => {
         <Text style={styles.title}>{manga.title}</Text>
       </View>
       <Text style={styles.description}>{manga.description}</Text>
-      <View style={styles.chapterListContainer}>
+      <View
+        style={styles.chapterListContainer}
+        onLayout={(e) => setContainerHeight(e.nativeEvent.layout.height)}
+      >
         <Animated.FlatList
           data={manga.chapters}
           renderItem={renderChapterItem}
@@ -98,10 +102,13 @@ const MangaDetailsScreen = ({ route }) => {
             { useNativeDriver: false }
           )}
           contentContainerStyle={styles.chapterList}
+          onContentSizeChange={(w, h) => setContentHeight(h)}
         />
         {manga.chapters.length > 6 && (
           <ScrollIndicator
             scrollY={scrollY}
+            containerHeight={containerHeight}
+            contentHeight={contentHeight}
             itemCount={manga.chapters.length}
           />
         )}
@@ -110,14 +117,12 @@ const MangaDetailsScreen = ({ route }) => {
   );
 };
 
-const ScrollIndicator = ({ scrollY, itemCount }) => {
-  const indicatorHeight = 10; // Height of the white ball indicator
-  const listHeight = 290; // Height of the FlatList container
-  const contentHeight = itemCount * 43.5; // Assuming each item has a height of 40
+const ScrollIndicator = ({ scrollY, containerHeight, contentHeight }) => {
+  const indicatorHeight = 10; // Height of the scroll indicator "ball"
 
   const translateY = scrollY.interpolate({
-    inputRange: [0, contentHeight - listHeight],
-    outputRange: [0, listHeight - indicatorHeight],
+    inputRange: [0, Math.max(0, contentHeight - containerHeight)],
+    outputRange: [0, containerHeight - indicatorHeight],
     extrapolate: "clamp",
   });
 
