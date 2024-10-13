@@ -11,7 +11,7 @@ const DebugStateComponent = () => {
     );
   }, [currentState]);
 
-  return null; // You can replace this with actual UI
+  return null;
 };
 
 export default DebugStateComponent;
