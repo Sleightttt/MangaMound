@@ -27,7 +27,7 @@ const Stack = createStackNavigator();
 const MangaStack = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="Landing"
+      name="Home"
       component={LandingScreen}
       options={{
         headerStyle: {
@@ -51,9 +51,9 @@ const MangaStack = () => (
       name="MangaDetails"
       component={MangaDetailsScreen}
       options={{
-        title: "Manga Details",
+        title: "Details",
         headerStyle: { backgroundColor: "#242424" },
-        headerTintColor: "#fff",
+        headerTintColor: "red",
         headerShown: true,
 
         headerTitle: () => (
@@ -75,7 +75,7 @@ const MangaStack = () => (
         headerStyle: {
           backgroundColor: "#242424",
         },
-        headerTintColor: "#fff",
+        headerTintColor: "red",
         headerShown: true,
         headerTitle: () => (
           <Image
