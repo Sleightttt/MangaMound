@@ -98,7 +98,7 @@ const ProfileStack = () => (
       name="ProfileTab"
       component={ProfileScreen}
       options={{
-        title: "Profile", // Customize as needed
+        title: "Profile",
         headerStyle: { backgroundColor: "#242424" },
         headerTintColor: "#fff",
         headerShown: true,
