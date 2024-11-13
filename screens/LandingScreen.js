@@ -10,7 +10,7 @@ import {
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import CategoryContainer from "../components/CategoryContainer";
 import { images } from "../constants";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 const mangaData = {
@@ -19,6 +19,24 @@ const mangaData = {
   genre: "Action, Adventure",
   chapters: 700,
 };
+
+//pulling from mangas collection in firestore db
+async function fetchMangas() {
+  try {
+    const mangasCollection = collection(db, "mangas"); // Reference to the 'mangas' collection
+    const snapshot = await getDocs(mangasCollection); // Fetch all documents
+    const mangaList = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    })); // Map the documents to an array of objects
+
+    console.log(mangaList); // Log the fetched manga data
+  } catch (error) {
+    console.error("Error fetching mangas: ", error);
+  }
+}
+
+fetchMangas();
 
 const screenWidth = Dimensions.get("window").width;
 
