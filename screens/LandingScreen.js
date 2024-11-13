@@ -186,7 +186,7 @@ const LandingScreen = ({ navigation }) => {
   }, [activeSlide]);
 
   return (
-    <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
+    <ScrollView style={{ backgroundColor: "#242424", flex: 1 }}>
       <ImageBackground
         source={images.lp_bg}
         style={styles.backgroundImage}

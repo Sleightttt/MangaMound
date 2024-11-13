@@ -51,7 +51,7 @@ const MangaDetailsScreen = ({ route }) => {
       ],
     },
     2: {
-      title: "One Piece",
+      title: "Two Piece",
       description:
         "An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.An epic journey of pirates.",
       cover: images.group,
@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     marginBottom: 10,
+    backgroundColor: "rgba(24, 24, 24, 0.7)",
   },
   title: {
     padding: 10,

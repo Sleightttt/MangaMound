@@ -19,7 +19,7 @@ import MangaDetailsScreen from "../screens/MangaDetailsScreen";
 import ChapterScreen from "../screens/ChapterScreen";
 import { images } from "../constants";
 import SearchScreen from "../screens/SearchScreen";
-import LoadingScreen from "../components/LoadingScreen"; // Import your LoadingScreen component
+import LoadingScreen from "../components/LoadingScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
