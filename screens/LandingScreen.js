@@ -204,12 +204,19 @@ const LandingScreen = ({ navigation }) => {
   }, [activeSlide]);
 
   return (
-    <ScrollView style={{ backgroundColor: "#242424", flex: 1 }}>
+    <View style={{ flex: 1 }}>
+      {/* Static background image */}
       <ImageBackground
         source={images.lp_bg}
         style={styles.backgroundImage}
         resizeMode="cover"
       >
+        {/* Overlay to dim or stylize if needed */}
+        <View style={styles.overlay} />
+      </ImageBackground>
+
+      {/* Scrollable foreground content */}
+      <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.container}>
           <Carousel
             ref={carouselRef}
@@ -240,39 +247,24 @@ const LandingScreen = ({ navigation }) => {
             inactiveDotOpacity={0.6}
             inactiveDotScale={0.4}
           />
-          <CategoryContainer
-            title="Continue Reading"
-            data={mangas}
-            onPress={handlePress}
-          />
-          <CategoryContainer
-            title="Popular Mangas"
-            data={mangas}
-            onPress={handlePress}
-          />
-          <CategoryContainer
-            title="New Releases"
-            data={mangas}
-            onPress={handlePress}
-          />
-          <CategoryContainer
-            title="Top Rated"
-            data={mangas}
-            onPress={handlePress}
-          />
-          <CategoryContainer
-            title="Fantasy"
-            data={mangas}
-            onPress={handlePress}
-          />
-          <CategoryContainer
-            title="Slice of Life"
-            data={mangas}
-            onPress={handlePress}
-          />
+          {[
+            "Continue Reading",
+            "Popular Mangas",
+            "New Releases",
+            "Top Rated",
+            "Fantasy",
+            "Slice of Life",
+          ].map((title) => (
+            <CategoryContainer
+              key={title}
+              title={title}
+              data={mangas}
+              onPress={handlePress}
+            />
+          ))}
         </View>
-      </ImageBackground>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -288,8 +280,8 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 20,
     overflow: "hidden",
-    borderColor: "#242424",
-    borderWidth: 1.5,
+    borderColor: "#030303",
+    borderWidth: 2.0,
   },
   bannerImage: {
     width: "100%",
@@ -298,7 +290,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   backgroundImage: {
+    ...StyleSheet.absoluteFillObject, // covers the entire screen
+    zIndex: -1, // send it to the back
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  scrollContent: {
+    paddingBottom: 100, // add space if needed
+  },
+  container: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
   },
   promoText: {
     color: "#242424",

@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 2,
     elevation: 10,
-    borderWidth: 0.5,
+    borderWidth: 2,
     borderColor: "#242424",
   },
   catHeader: {
